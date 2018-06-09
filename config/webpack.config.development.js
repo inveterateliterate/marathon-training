@@ -20,7 +20,7 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: [
     // Include polyfills
-    'babel-polyfill', 
+    'babel-polyfill',
     paths.jsFolder,
   ],
   output: {
@@ -29,7 +29,7 @@ module.exports = {
   resolve: {
     alias: aliases(paths.sourceFolder),
     // Resolve .index files correctly
-    mainFiles: ['index', '.index'], 
+    mainFiles: ['index', '.index'],
   },
   module: {
     rules: [
@@ -45,7 +45,7 @@ module.exports = {
         include: paths.sourceFolder,
         use: [
           {
-            loader: 'url-loader', 
+            loader: 'url-loader',
             options: {
               limit: 10000,
               name: 'static/media/[name].[hash:8].[ext]'

@@ -15,7 +15,6 @@ function aliases (basePath) {
     'images': to('images'),
     'local-storage': to('js/services/localStorage'),
     'reducer': to('js/main/reducer'),
-    'sentry': to('js/services/sentry'),
     'types': to('js/main/types'),
     'utils': to('js/utils'),
     // Modules

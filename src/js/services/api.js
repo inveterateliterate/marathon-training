@@ -3,8 +3,10 @@ import { middleware as configureMiddleware } from 'lp-redux-api'
 
 // Configure middleware and api services
 
+const { API_URL } = process.env
+
 export const config = {
-  // root: SOME_API_URL,
+  root: API_URL,
   mode: 'cors',
   successDataPath: 'data.attributes',
 }
