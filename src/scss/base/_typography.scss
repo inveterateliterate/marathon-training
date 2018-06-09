@@ -1,0 +1,115 @@
+// Base Typography
+// ========================================
+
+html{
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: $white-light;
+  @include font-type($primary-sans-serif, normal, normal);
+  font: 100%/1.618;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include font-type($primary-sans-serif, normal, $bold);
+  @include rem(margin-bottom, 20px);
+  color: $grey-base;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.1;
+
+  a{
+    @include font-type($primary-sans-serif, normal, $bold);
+    @include transition(all 0.3s ease-in-out);
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+h1 { font-size: $font-size-base * 1.20; @include media($tablet){ font-size: $font-size-base * 1.30; } }
+h2 { font-size: $font-size-base * 2.00; @include media($tablet){ font-size: $font-size-base * 2.00; } }
+h3 { font-size: $font-size-base * 1.45; @include media($tablet){ font-size: $font-size-base * 2.25; } }
+h4 { font-size: $font-size-base * 1.25; @include media($tablet){ font-size: $font-size-base * 1.5; } }
+h5 { font-size: $font-size-base * 1.00; @include media($tablet){ font-size: $font-size-base * 1.15; } }
+h6 { font-size: $font-size-base - 2.00; @include media($tablet){ font-size: $font-size-base * 1.00; } }
+
+
+h2{
+  color: $blue-base;
+}
+
+h4{
+  border-top: 1px solid $white-med;
+  @include rem(padding, 20px 0px 0px);
+  font-weight: $regular;
+}
+
+.primary-color{
+  color: $blue-base;
+}
+
+p{
+  font-weight: normal;
+  font-style: normal;
+  @include font-type($primary-sans-serif, normal, $regular);
+  @include s-base;
+  @include rem(margin-bottom, 12px);
+  line-height: $base-line-loose;
+  color: $black-base;
+
+  &:last-child { @include rem(margin-bottom, 0); }
+}
+
+li,
+dd{
+  color: $black-base;
+  @include font-type($primary-sans-serif, normal, normal);
+  line-height: $base-line-height;
+  list-style: none;
+}
+
+a {
+  color: $black-base;
+  cursor: pointer;
+  @include s-base;
+  @include font-type($primary-sans-serif, normal, $bold);
+  @include transition(all 0.3s ease-in-out);
+  text-decoration: underline;
+
+  &:hover, &:focus  {
+    color: $black-dark;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
+strong, b { font-weight: $bold; }
+i, em { font-style: italic; }
+
+span{
+  color: $grey-base;
+}
+
+u{
+  text-decoration: underline;
+}
+
+hr{
+  @include rem(margin-bottom, 20px);
+}

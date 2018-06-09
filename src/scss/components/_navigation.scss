@@ -1,0 +1,286 @@
+// Site Navigation Styles
+// ========================================
+$mobile-nav-height: 58px;
+$desktop-nav-height: 70px;
+$tablet-nav-height: 90px;
+
+.navigation {
+  background-color: $blue-base;
+  box-shadow: 0 0 18px 0 rgba(131,131,131,0.10);
+  height: $desktop-nav-height;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.tablet{
+
+  .navigation{
+    padding-top: 20px;
+    height: $tablet-nav-height;
+  }
+  .content{
+    margin-top: $tablet-nav-height;
+  }
+}
+
+
+/*-----------------------
+Logo
+-----------------------*/
+.logo{
+  color: $white-base;
+  @include rem(margin-bottom, 0px);
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 5px;
+  @include rem(padding, 10px 20px);
+  width: 250px;
+  float: left;
+  display: block;
+
+  a{
+    vertical-align: sub;
+  }
+
+  &:hover{
+    color: $white-base;
+    opacity: 0.6;
+  }
+}
+
+/*-----------------------
+Primary Nav
+-----------------------*/
+.navigation{
+  @include position(fixed, 0 null null null);
+  @include transition(all 0.3s ease-in-out);
+  width: 100%;
+  z-index: 2;
+
+  nav{
+    text-align: right;
+    float: right;
+    @include mobile-hide;
+  }
+
+  li{
+    display: inline-block;
+    @include rem(margin, 0 0 0 25px);
+    // text-transform: uppercase;
+    vertical-align: top;
+
+    &:last-child{
+      &:before{
+        border-left: 1px solid $white-base;
+        // content: "";
+        display: inline-block;
+        height: 27px;
+        @include rem(margin-right, 25px);
+        opacity: 0.6;
+        vertical-align: middle;
+      }
+
+      a:after{
+        content: "";
+        cursor: pointer;
+        display: inline-block;
+        background-image: asset-url("dropdown-white.svg");
+        background-repeat: no-repeat;
+        background-size: 15px;
+        height: 10px;
+        @include rem(margin-left, 10px);
+        width: 20px;
+        vertical-align: middle;
+      }
+    }
+
+    a{
+      // color: $white-base;
+      @include s-small;
+      text-decoration: none;
+
+      &:hover{
+        opacity: 0.6;
+      }
+    }
+
+  }
+}
+
+/*-----------------------
+Dropdown
+-----------------------*/
+.submenu{
+  background-color: $white-base;
+  box-shadow: 0 0 18px 0 rgba(232,232,232,0.50);
+  @include animation(fade-in 0.2s ease-in);
+  @include rem(margin-top, 10px);
+
+  li a{
+    @include s-small;
+    @include rem(padding, 5px 15px);
+
+    &:hover{
+      color: $blue-base;
+    }
+  }
+}
+
+.hover-menu {
+  display: inline-block;
+  @include rem(padding-bottom, 25px);
+  overflow: visible;
+  padding-right: 0;
+  position: relative;
+
+  .submenu {
+    display: none;
+    @include position(absolute, 30px 0px null null);
+    padding-left: 0;
+    z-index: 3;
+  }
+
+  .submenu li {
+    display: block;
+    margin: 0;
+    padding-right: 0;
+
+    &:before{
+      display: none;
+    }
+
+    a{
+      color: $grey-dark;
+      display: inline-block;
+      text-align: right;
+      width: 185px;
+
+      &:hover{
+        color: $blue-base;
+        opacity: 1;
+      }
+
+      &:after{
+        display: none;
+      }
+    }
+  }
+
+
+  &:focus > .submenu,
+  &:hover > .submenu {
+    display: block;
+  }
+}
+
+/*-----------------------
+Search
+-----------------------*/
+.search-block{
+  display: inline-block;
+  vertical-align: super;
+  @include rem(padding, 20px);
+  position: relative;
+
+  h2{
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .matching-options{
+    background: white;
+    border: 1px solid $grey-base;
+    max-height: 200px;
+    width: 180px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    display: none;
+
+    &.show{
+      display: block;
+    }
+
+    ul > li {
+      text-align: left;
+      padding: 5px 10px;
+      width: 100%;
+      margin-left: 0px;
+
+      a {
+        color: $grey-base;
+      }
+
+      &:hover{
+        background-color: $white-light;
+      }
+    }
+  }
+
+  img{
+    display: inline-block;
+    width: 20px;
+    vertical-align: middle;
+  }
+
+  fieldset{
+    display: inline-block;
+    width: inherit;
+
+    input{
+      border: none;
+      background-color: transparent;
+      color: $white-base;
+      padding-top: 0px;
+
+      @include placeholder{
+        color: $white-base;
+      }
+    }
+  }
+}
+
+
+/*-----------------------
+Alerts
+-----------------------*/
+.alert-block{
+  border-left: 1px solid $white-base;
+  display: inline-block;
+  @include rem(padding, 20px);
+  position: relative;
+
+  img{
+    width: 20px;
+  }
+
+  &.alert{
+    &:after{
+      border-radius: 20em;
+      content:"";
+      display: block;
+      background-color: $red-base;
+      width: 10px;
+      border: 1px solid $blue-base;
+      height: 10px;
+      @include position(absolute, 36px null null 38px);
+    }
+  }
+}
+
+
+/*-----------------------
+Survey Nav
+-----------------------*/
+.navigation{
+  p{
+    color: $white-base;
+    display: inline-block;
+    @include rem(margin, 0 0 0 25px);
+    @include rem(padding, 18px 20px);
+    vertical-align: top;
+  }
+}

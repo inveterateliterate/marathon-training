@@ -1,0 +1,121 @@
+/*-----------------------
+Table
+-----------------------*/
+
+table{
+  background-color: $white-base;
+  table-layout: fixed;
+  width: 100%;
+
+  th, td {
+    display: table-cell;
+    @include rem(margin, 15px 5px);
+    @include rem(padding, 12px 10px);
+    @include s-base;
+    text-align: left;
+    white-space: nowrap;
+    width: inherit;
+    vertical-align: middle;
+  }
+
+  th, td:before {
+    color: $grey-base;
+    font-weight: $bold;
+    @include s-base;
+  }
+
+  td{
+    max-width: 300px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  th{
+    color: $black-base;
+    width: 100%;
+  }
+
+  th.sortable{
+    cursor: pointer;
+  }
+
+  tbody{
+    overflow: auto;
+
+    tr{
+      &.clickable{
+        cursor: pointer;
+      }
+      &:nth-child(odd){
+        background-color: $white-light;
+      }
+    }
+  }
+}
+
+/*-----------------------
+Filter Table Arrows
+-----------------------*/
+
+th.sortable{
+  &:after{
+    display: inline-block;
+    font-size: 12px;
+    @include rem(margin-left, 10px);
+    opacity: 0.4;
+  }
+
+  &.order-descend:after {
+    // @include arrow;
+    background-image: url('../images/dropdown.svg');
+  }
+  &.order-ascend:after{
+    // @include arrow;
+    background-image: url('../images/dropdown.svg');
+    @include transform(scaleY(-1));
+    filter: FlipV;
+    -ms-filter: “FlipV”;
+  }
+  &:not(.order-ascend):not(.order-descend):hover:after {
+    // @include arrow;
+    background-image: url('../images/dropdown.svg');
+    @include transform(scaleY(-1));
+    filter: FlipV;
+    -ms-filter: “FlipV”;
+  }
+}
+
+//Dot
+td span.dot{
+  vertical-align: 1px;
+}
+
+
+/*-----------------------
+Arrows
+-----------------------*/
+.arrow{
+  &:before{
+    content:"";
+    display: inline-block;
+    @include rem(margin-right, 10px);
+    vertical-align: middle;
+  }
+
+  &.is-positive{
+    color: $green-base;
+
+    &:before{
+      @include triangle(16px, $green-base, up);
+    }
+  }
+
+  &.is-negative{
+    color: $red-base;
+
+    &:before{
+      @include triangle(16px, $red-base, down);
+    }
+  }
+}

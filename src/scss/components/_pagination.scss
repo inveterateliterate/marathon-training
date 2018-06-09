@@ -1,0 +1,42 @@
+.pagination{
+  display: table;
+  @include rem(margin, 20px auto 0px);
+  @include rem(padding, 2px 2px 3px 1px);
+
+  li{
+    float: left;
+    @include rem(margin, 0 4px 0 0);
+    @include s-small;
+
+    &:last-child{
+      margin: 0;
+    }
+
+    &.active a,
+    a:active {
+      background-color: $blue-base;
+      color: $white-base;
+      border-radius: 20em;
+    }
+
+    a:hover{
+      color: $blue-base;
+    }
+
+    .delimeter{
+      display: block;
+      @include rem(padding-top, 6px);
+    }
+  }
+
+  a{
+    border-radius: 2px;
+    color: $grey-base;
+    float: left;
+    height: 35px;
+    @include rem(padding, 4px 10px);
+    text-decoration: none;
+    text-align: center;
+    width: 35px;
+  }
+}

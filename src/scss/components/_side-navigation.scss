@@ -1,0 +1,83 @@
+
+$side-navigation: 82px;
+
+.side-navigation{
+  background-color: $blue-darker;
+  box-shadow: 0 0 18px 0 rgba(232,232,232,0.50);
+  @include position(fixed, 0px null 0px 0px);
+  @include rem(padding, 20px 18px 30px);
+  margin-top: $desktop-nav-height;
+  width: $side-navigation;
+  z-index: 1;
+
+  h5{
+    border-bottom: 1px solid $white-med;
+    color: $blue-base;
+    @include rem(padding, 21px 0px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  a{
+    display: inline-block;
+    @include font-type($primary-sans-serif, normal, $bold);
+    @include rem(margin-bottom, 10px);
+    font-size: 13.75px;
+    text-decoration: none;
+    text-transform: uppercase;
+    height: 40px;
+    width: 40px;
+    opacity: 0.6;
+
+    &.is-active{
+      background-color: darken($blue-darker, 10%);
+      border-radius: 20em;
+    }
+
+    img{
+      padding: 10px;
+    }
+
+    &:hover{
+      opacity: 1;
+    }
+  }
+}
+
+
+/*-----------------------
+Nested
+-----------------------*/
+.is-nested{
+  position: relative;
+
+  &:hover{
+    ul{
+      background-color: $white-base;
+      box-shadow: 0 0 10px 0 rgba(67,66,66,0.20);
+      display: block;
+      @include position(absolute, 0px null null 41px);
+      width: 180px;
+
+      &:before{
+        content: "";
+        @include triangle(22px, white, left);
+        @include position(absolute, 10px null null -10px);
+      }
+
+      a{
+        text-transform: none;
+        height: inherit;
+        @include rem(margin, 5px);
+        padding: 0px;
+        width: 100%;
+      }
+    }
+  }
+
+  ul{
+    display: none;
+  }
+
+}

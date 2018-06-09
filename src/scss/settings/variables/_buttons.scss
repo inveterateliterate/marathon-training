@@ -1,0 +1,13 @@
+// Buttons
+// ========================================
+
+$buttons: (
+  (primary,     $blue-base,    $blue-base,    $white-base,   $blue-dark,    $white-base)
+  (primary-outline,     transparent,    $blue-base,    $blue-base,   $blue-base,    $white-base)
+  (alert,     $yellow-base,    $yellow-base,    $white-base,   $yellow-dark,    $white-base)
+  (alert-outline,     transparent,    $yellow-base,    $yellow-base,   $yellow-base,    $white-base)
+  (warn,     $red-base,    $red-base,    $white-base,   $red-dark,    $white-base)
+  (secondary,     $grey-base,    $grey-base,    $white-base,   $grey-dark,    $white-base)
+  (secondary-light,     $grey-light,    $grey-light,    $grey-base,   $grey-base,    $white-base)
+  (secondary-outline,     transparent,    $grey-base,    $grey-base,   $grey-base,    $white-base)
+);

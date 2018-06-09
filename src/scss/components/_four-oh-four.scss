@@ -1,0 +1,13 @@
+/*-----------------------
+Four oh Four
+-----------------------*/
+.four-oh-four{
+  @include center;
+  @include rem(margin-top, 60px);
+  max-width: 450px;
+  text-align: center;
+
+  h1{
+    @include s-mega;
+  }
+}

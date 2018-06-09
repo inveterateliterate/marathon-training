@@ -1,0 +1,49 @@
+/*-----------------------
+Content Header
+-----------------------*/
+.header-content{
+  background-color: $white-base;
+  border-bottom: $grey-border;
+  display: inline-block;
+  @include rem(padding, 20px 30px);
+  width: 100%;
+
+  @include media($tablet){
+    height: 92px;
+  }
+
+  .header-block-container{
+    @include rem(padding, 30px 30px);
+  }
+
+  h1, h5{
+    float: left;
+    @include rem(margin, 10px 0px 2px);
+  }
+
+  .header-buttons{
+    float: right;
+
+    li{
+      display: inline-block;
+      @include rem(margin-left, 15px);
+
+      a{
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// Layout Condition
+.with-sidebar{
+  .header-content{
+    width: calc(100% - 245px);
+  }
+}
+
+// Custom header for survey taking page
+.survey-header{
+  margin: -20px -15px; 
+  padding: 30px;
+}
