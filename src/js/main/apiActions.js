@@ -1,3 +1,9 @@
-// import { requestWithKey } from 'lp-redux-api'
+import { requestWithKey } from 'lp-redux-api'
 
-// API actions go here.
+export const REQ_SCHEDULE = 'REQ_SCHEDULE'
+
+export function fetchSchedule () {
+  return requestWithKey(REQ_SCHEDULE, {
+    url: process.env.API_ENDPOINT
+  })
+}

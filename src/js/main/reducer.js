@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
 import {
-  reducer as homeReducer,
-  reducerKey as homeReducerKey,
-} from './home'
+  reducer as scheduleReducer,
+  reducerKey as scheduleReducerKey,
+} from './schedule'
 
 const reducerKey = 'root'
 
 const reducer = combineReducers({
-  [homeReducerKey]: homeReducer,
+  [scheduleReducerKey]: scheduleReducer,
 })
 
 export { reducer, reducerKey }

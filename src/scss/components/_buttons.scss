@@ -3,7 +3,7 @@
 
 // Main Button
 @mixin button{
-  border-radius: 20em;
+  border-radius: 1em;
   box-shadow: 0 0 18px 0 rgba(180,180,180,0.50);
   display: inline-block;
   @include font-type($primary-sans-serif, normal, $bold);

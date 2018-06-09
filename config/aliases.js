@@ -14,6 +14,7 @@ function aliases (basePath) {
     'effects': to('js/main/effects'),
     'images': to('images'),
     'local-storage': to('js/services/localStorage'),
+    'options': to('js/main/options'),
     'reducer': to('js/main/reducer'),
     'types': to('js/main/types'),
     'utils': to('js/utils'),
