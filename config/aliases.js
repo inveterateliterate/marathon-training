@@ -19,6 +19,9 @@ function aliases (basePath) {
     'types': to('js/main/types'),
     'utils': to('js/utils'),
     // Modules
+    'fontawesome': '@fortawesome/fontawesome',
+    'fontawesome-solid': '@fortawesome/fontawesome-free-solid',
+    'react-fontawesome': '@fortawesome/react-fontawesome',
     'lp-components': '@launchpadlab/lp-components',
     'lp-form': '@launchpadlab/lp-form',
     'lp-redux-api': '@launchpadlab/lp-redux-api',

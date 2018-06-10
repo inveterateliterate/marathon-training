@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export const dayRecord = PropTypes.shape({
+export const dayRecordFields = PropTypes.shape({
   iD: PropTypes.number.isRequired,
   cES: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,

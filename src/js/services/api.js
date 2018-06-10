@@ -3,7 +3,8 @@ import { middleware as configureMiddleware } from 'lp-redux-api'
 
 // Configure middleware and api services
 
-const { API_HOST, API_TOKEN } = process.env
+export const { API_HOST, API_ENDPOINT, API_TOKEN } = process.env
+export const API_URL = [API_HOST, API_ENDPOINT].join('/')
 
 function before () {
   return {

@@ -26,6 +26,9 @@
     "analyze-bundle": "echo 'Building bundle...' && yarn run generate-bundsle-stats && yarn run bundle-analyzer-server"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/react-fontawesome": "^0.0.20",
     "@launchpadlab/babel-preset": "^1.0.0",
     "@launchpadlab/lp-components": "^3.10.0",
     "@launchpadlab/lp-form": "^2.2.1",
@@ -51,9 +54,9 @@
     "figaro-js": "^1.0.2",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.6",
+    "http-proxy-middleware": "0.18.0",
     "json-loader": "0.5.7",
     "lodash": "^4.17.4",
-    "http-proxy-middleware": "0.18.0",
     "node-sass": "^4.7.2",
     "postcss-loader": "^2.0.8",
     "prop-types": "^15.6.0",

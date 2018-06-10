@@ -11,11 +11,12 @@ import { groupByWeek } from 'utils'
 
 const propTypes = {
   schedule: PropTypes.array.isRequired,
+  redirectToSchedule: PropTypes.func.isRequired,
 }
 
 const defaultProps = {}
 
-function Schedule ({ schedule }) {
+function Schedule ({ schedule, redirectToSchedule }) {
   const recordsByWeek = groupByWeek(schedule)
   return (
     <div>
@@ -29,6 +30,7 @@ function Schedule ({ schedule }) {
               key={ i }
               weekArray={ recordsByWeek[week] }
               weekNum={ week }
+              redirectToSchedule={ redirectToSchedule }
             />
           )
         }
@@ -49,6 +51,7 @@ function mapStateToProps (state) {
 
 const mapDispatchToProps = {
   fetchSchedule: apiActions.fetchSchedule,
+  redirectToSchedule: actions.redirectToSchedule,
   clearSchedule: actions.clearSchedule
 }
 
