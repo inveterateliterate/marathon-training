@@ -17,6 +17,7 @@ export function updateSatus (recordId, params) {
 }
 
 export function updateDay (recordId, params) {
+  console.log(params)
   // const statusCopy = status ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE
   // return api.patch(`${API_ENDPOINT}/${recordId}`, { fields: { 'Status': 'Completed '} })
   return fetch(`${API_URL}/${recordId}`, {

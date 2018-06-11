@@ -22,13 +22,13 @@ if (NODE_ENV === 'production') {
 app.use(express.static('build'))
 
 // use proxy for third-party APIs
-app.use('/v0', proxy({
-  target: API_HOST,
-  changeOrigin: true,
-  headers: { Authorization: `Bearer ${API_TOKEN}` },
-  secure: true,
-  ignorePath: true,
-}))
+// app.use('/v0', proxy({
+//   target: API_HOST,
+//   changeOrigin: true,
+//   headers: { Authorization: `Bearer ${API_TOKEN}` },
+//   secure: true,
+//   ignorePath: true,
+// }))
 
 // Send main index file for every request
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/build/index.html')))

@@ -1,0 +1,7 @@
+.weekday {
+  @include rem(margin-top, 6px);
+}
+
+.summary {
+  @include rem(margin-bottom, 14px);
+}

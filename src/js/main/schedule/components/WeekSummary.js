@@ -23,41 +23,47 @@ function WeekSummary ({
       date,
       halHigdon,
       other,
-      status,
+      // status,
       notes,
     },
     id: recordId,
   },
     statusButton,
-    toggleStatusButton,
-    setStatusButton,
+    // toggleStatusButton,
+    // setStatusButton,
 }) {
   // setStatusButton(options.statusValues[status])
   return (
-    <div>
-      <b>{ moment(date).format('dddd, MMMM Do YYYY') }</b>
-      <br/>
-      <button
-        className={ classnames('button', `button-${statusButton ? 'success' : 'warn'}`, 'button-medium') }
-        onClick={
-          () => {
-            toggleStatusButton()
-            effects.updateSatus(recordId, !statusButton ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
-          }
-        }
-      >
-        { statusButton ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE }
-      </button>
-      <br/>
-      <b>Hal Higdon:</b><p>{ halHigdon }</p>
-      <br/>
-      <b>CES:</b><p>{ cES }</p>
-      <br/>
-      <b>Other:</b><p>{ other }</p>
+    <div className="panel">
+      <div className="row">
+        <div className="col-7">
+          <b className="weekday">{ moment(date).format('dddd, MMMM Do') }</b>
+        </div>
+        <div className="col-5">
+          <button
+            className={ classnames('button', `button-${statusButton ? 'success' : 'warn'}`, 'button-small') }
+            onClick={
+              () => {
+                // toggleStatusButton()
+                effects.updateSatus(recordId, !statusButton ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
+              }
+            }
+          >
+            { statusButton ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE }
+          </button>
+        </div>
+      </div>
+      <div className="summary">
+        <p><b>Hal Higdon:</b> { halHigdon }</p>
+        <p><b>CES:</b> { cES }</p>
+        <p><b>Other:</b> { other }</p>
+      </div>
       <DayForm
         initialValues={ { notes } }
         onSubmit={ params => effects.updateDay(recordId, params) }
+        name={ `day-form-${recordId}` }
       />
+      <hr/>
     </div>
   )
 }
@@ -73,7 +79,7 @@ function modify ({ dayRecord }) {
 
 export default compose(
   // onMount?
-  modifyProps(modify),
   toggle('statusButton'),
+  modifyProps(modify),
 )(WeekSummary)
 

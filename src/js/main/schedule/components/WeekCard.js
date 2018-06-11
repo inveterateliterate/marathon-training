@@ -23,23 +23,31 @@ function WeekCard ({
   toggleExpanded,
 }) {
   return (
-    <div className={ classnames('collapsible-container', { expanded }) }>
-      <FontAwesomeIcon
-        icon={ expanded ? faMinus : faPlus }
-        style={ { cursor: 'pointer', color: '#A9A9A9' } }
-        onClick={ toggleExpanded }
-        className="collapsible"
-      />
-      <h3>Week { weekNum }</h3>
-      {
-        expanded &&
-        weekArray.map((day, i) =>
-          <WeekSummary
-            key={ i }
-            dayRecord={ day }
-          />
-        )
-      }
+    <div >
+      <div className={ classnames('collapsible-container', 'card', { expanded }) }>
+        <div className="row">
+          <div className="col-9">
+            <h3>Week { weekNum }</h3>
+          </div>
+          <div className="col-3">
+              <FontAwesomeIcon
+                icon={ expanded ? faMinus : faPlus }
+                style={ { cursor: 'pointer', color: '#A9A9A9' } }
+                onClick={ toggleExpanded }
+                className="collapsible"
+              />
+          </div>
+        </div>
+        {
+          expanded &&
+          weekArray.map((day, i) =>
+            <WeekSummary
+              key={ i }
+              dayRecord={ day }
+            />
+          )
+        }
+      </div>
     </div>
   )
 }

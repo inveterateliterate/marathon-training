@@ -8,6 +8,7 @@ $output-bourbon-deprecation-warnings: false;
 
 // Base Styles
 @import "base/typography";
+@import "pages/schedule";
 
 // Components
 @import "components/buttons";

@@ -39,15 +39,15 @@ h6 {
   }
 }
 
-h1 { font-size: $font-size-base * 1.20; @include media($tablet){ font-size: $font-size-base * 1.30; } }
-h2 { font-size: $font-size-base * 2.00; @include media($tablet){ font-size: $font-size-base * 2.00; } }
-h3 { font-size: $font-size-base * 1.45; @include media($tablet){ font-size: $font-size-base * 2.25; } }
-h4 { font-size: $font-size-base * 1.25; @include media($tablet){ font-size: $font-size-base * 1.5; } }
+h1 { font-size: $font-size-base * 2.30; @include media($tablet){ font-size: $font-size-base * 1.30; } }
+h2 { font-size: $font-size-base * 1.45; @include media($tablet){ font-size: $font-size-base * 2.00; } }
+h3 { font-size: $font-size-base * 1.25; @include media($tablet){ font-size: $font-size-base * 2.25; } }
+h4 { font-size: $font-size-base * 1.20; @include media($tablet){ font-size: $font-size-base * 1.5; } }
 h5 { font-size: $font-size-base * 1.00; @include media($tablet){ font-size: $font-size-base * 1.15; } }
 h6 { font-size: $font-size-base - 2.00; @include media($tablet){ font-size: $font-size-base * 1.00; } }
 
 
-h2{
+h1{
   color: $blue-base;
 }
 
@@ -66,8 +66,8 @@ p{
   font-style: normal;
   @include font-type($primary-sans-serif, normal, $regular);
   @include s-base;
-  @include rem(margin-bottom, 12px);
-  line-height: $base-line-loose;
+  @include rem(margin-bottom, 8px);
+  line-height: $base-line-small;
   color: $black-base;
 
   &:last-child { @include rem(margin-bottom, 0); }

@@ -19,22 +19,22 @@ const defaultProps = {}
 function Schedule ({ schedule, redirectToSchedule }) {
   const recordsByWeek = groupByWeek(schedule)
   return (
-    <div>
-      <h1>2018 Chicago Marathon Training Schedule</h1>
-      <h2>Race Date: October 7 2018</h2>
+    <div >
+      <header className="header-block-container">
+        <h1>2018 Chicago Marathon Training Schedule</h1>
+        <h2>Race Date: October 7 2018</h2>
+      </header>
 
-      <div className="container">
-        {
-          Object.keys(recordsByWeek).map((week, i) =>
-            <WeekCard
-              key={ i }
-              weekArray={ recordsByWeek[week] }
-              weekNum={ week }
-              redirectToSchedule={ redirectToSchedule }
-            />
-          )
-        }
-      </div>
+      {
+        Object.keys(recordsByWeek).map((week, i) =>
+          <WeekCard
+            key={ i }
+            weekArray={ recordsByWeek[week] }
+            weekNum={ week }
+            redirectToSchedule={ redirectToSchedule }
+          />
+        )
+      }
     </div>
 
   )
