@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'recompose'
-import { toggle, togglePropTypes, modifyProps } from 'lp-hoc'
+import { toggle, togglePropTypes, onMount } from 'lp-hoc'
 import moment from 'moment'
 import classnames from 'classnames'
 import { DayForm } from '../forms'
@@ -23,16 +23,13 @@ function WeekSummary ({
       date,
       halHigdon,
       other,
-      // status,
       notes,
     },
     id: recordId,
   },
     statusButton,
-    // toggleStatusButton,
-    // setStatusButton,
+    toggleStatusButton,
 }) {
-  // setStatusButton(options.statusValues[status])
   return (
     <div className="panel">
       <div className="row">
@@ -44,8 +41,8 @@ function WeekSummary ({
             className={ classnames('button', `button-${statusButton ? 'success' : 'warn'}`, 'button-small') }
             onClick={
               () => {
-                // toggleStatusButton()
                 effects.updateSatus(recordId, !statusButton ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
+                toggleStatusButton()
               }
             }
           >
@@ -71,15 +68,13 @@ function WeekSummary ({
 WeekSummary.propTypes = propTypes
 WeekSummary.defaultProps = defaultProps
 
-function modify ({ dayRecord }) {
-  return {
-    statusButton: options.statusValues[dayRecord.fields.status]
-  }
+function modify ({ dayRecord, setStatusButton }) {
+  const statusBool = options.statusValues[dayRecord.fields.status]
+  return setStatusButton(statusBool)
 }
 
 export default compose(
-  // onMount?
   toggle('statusButton'),
-  modifyProps(modify),
+  onMount(modify),
 )(WeekSummary)
 
