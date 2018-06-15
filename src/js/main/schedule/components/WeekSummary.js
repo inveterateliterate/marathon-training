@@ -1,17 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'recompose'
-import { toggle, togglePropTypes, onMount } from 'lp-hoc'
+import { modifyProps } from 'lp-hoc'
 import moment from 'moment'
 import classnames from 'classnames'
 import { DayForm } from '../forms'
-// import * as Types from 'types'
+import * as Types from 'types'
 import * as effects from 'effects'
 import * as options from 'options'
 
 const propTypes = {
-  ...togglePropTypes('statusButton'),
-  dayRecord: PropTypes.object.isRequired,
+  isCompleted: PropTypes.bool.isRequired,
+  dayRecord: Types.dayRecord.isRequired,
+  setSchedule: PropTypes.func.isRequired,
+  tableName: PropTypes.string.isRequired,
 }
 
 const defaultProps = {}
@@ -19,7 +21,7 @@ const defaultProps = {}
 function WeekSummary ({
   dayRecord: {
     fields: {
-      cES,
+      chicagoEnduranceSports,
       date,
       halHigdon,
       other,
@@ -27,8 +29,9 @@ function WeekSummary ({
     },
     id: recordId,
   },
-    statusButton,
-    toggleStatusButton,
+    isCompleted,
+    setSchedule,
+    tableName,
 }) {
   return (
     <div className="panel">
@@ -38,21 +41,24 @@ function WeekSummary ({
         </div>
         <div className="col-5">
           <button
-            className={ classnames('button', `button-${statusButton ? 'success' : 'warn'}`, 'button-small') }
+            className={ classnames('button', (isCompleted ? 'button-success' : 'button-warn'), 'button-small') }
             onClick={
               () => {
-                effects.updateSatus(recordId, !statusButton ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
-                toggleStatusButton()
+                effects.updateSatus(recordId, tableName, !isCompleted ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
+                .then(setSchedule)
               }
             }
           >
-            { statusButton ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE }
+            { isCompleted ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE }
           </button>
         </div>
       </div>
       <div className="summary">
         <p><b>Hal Higdon:</b> { halHigdon }</p>
-        <p><b>CES:</b> { cES }</p>
+        {
+          chicagoEnduranceSports &&
+          <p><b>CES:</b> { chicagoEnduranceSports }</p>
+        }
         <p><b>Other:</b> { other }</p>
       </div>
       <DayForm
@@ -68,13 +74,13 @@ function WeekSummary ({
 WeekSummary.propTypes = propTypes
 WeekSummary.defaultProps = defaultProps
 
-function modify ({ dayRecord, setStatusButton }) {
-  const statusBool = options.statusValues[dayRecord.fields.status]
-  return setStatusButton(statusBool)
+function modify ({ dayRecord }) {
+  return {
+    isCompleted: options.statusValues[dayRecord.fields.status]
+  }
 }
 
 export default compose(
-  toggle('statusButton'),
-  onMount(modify),
+  modifyProps(modify),
 )(WeekSummary)
 

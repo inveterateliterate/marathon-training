@@ -8,10 +8,11 @@ import { Header } from 'components'
 import { WeekCard } from '../components'
 import * as apiActions from 'api-actions'
 import * as actions from '../actions'
+import * as Types from 'types'
 import { groupByWeek } from 'utils'
 
 const propTypes = {
-  schedule: PropTypes.array.isRequired,
+  schedule: PropTypes.arrayOf(Types.dayRecord).isRequired,
   setSchedule: PropTypes.func.isRequired,
 }
 
@@ -29,7 +30,7 @@ function Schedule ({ schedule, setSchedule }) {
             weekArray={ recordsByWeek[week] }
             weekNum={ week }
             setSchedule={ setSchedule }
-            tableName="Schedule"
+            tableName="SarahSchedule"
           />
         )
       }
@@ -48,7 +49,7 @@ function mapStateToProps (state) {
 }
 
 const mapDispatchToProps = {
-  fetchSchedule: apiActions.fetchSchedule,
+  fetchSchedule: apiActions.fetchSarahSchedule,
   clearSchedule: actions.clearSchedule,
   setSchedule: actions.setSchedule,
 }

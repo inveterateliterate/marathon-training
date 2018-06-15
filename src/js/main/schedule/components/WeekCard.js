@@ -9,7 +9,7 @@ import WeekSummary from './WeekSummary'
 
 const propTypes = {
   ...togglePropTypes('expanded'),
-  redirectToSchedule: PropTypes.func.isRequired,
+  redirectToSchedule: PropTypes.func,
 }
 
 const defaultProps = {
@@ -21,6 +21,8 @@ function WeekCard ({
   weekNum,
   expanded,
   toggleExpanded,
+  setSchedule,
+  tableName,
 }) {
   return (
     <div >
@@ -44,6 +46,8 @@ function WeekCard ({
             <WeekSummary
               key={ i }
               dayRecord={ day }
+              setSchedule={ setSchedule }
+              tableName={ tableName }
             />
           )
         }
