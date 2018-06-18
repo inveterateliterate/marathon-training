@@ -3,38 +3,36 @@ import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { selectors } from '../reducer'
-import { onMount, waitFor, onUnmount } from 'lp-hoc'
 import { Header } from 'components'
 import { WeekCard } from '../components'
 import * as apiActions from 'api-actions'
 import * as actions from '../actions'
-import { groupByWeek } from 'utils'
 
 const propTypes = {
-  schedule: PropTypes.array.isRequired,
-  setSchedule: PropTypes.func.isRequired,
+  weeks: PropTypes.array.isRequired,
+  fetchWeek: PropTypes.func.isRequired,
+  setWeeks: PropTypes.func.isRequired,
 }
 
 const defaultProps = {}
 
-function Schedule ({ schedule, setSchedule }) {
-  const recordsByWeek = groupByWeek(schedule)
+function Schedule ({ weeks, fetchWeek, setWeeks }) {
   return (
-    <div >
+    <div>
       <Header />
       {
-        Object.keys(recordsByWeek).map((week, i) =>
+        weeks.map((week, i) =>
           <WeekCard
             key={ i }
-            weekArray={ recordsByWeek[week] }
-            weekNum={ week }
-            setSchedule={ setSchedule }
+            week={ week }
+            weekNum={ i + 1 }
+            onExpand={ () => fetchWeek((i + 1), 'Schedule') }
             tableName="Schedule"
+            setWeeks={ setWeeks }
           />
         )
       }
     </div>
-
   )
 }
 
@@ -43,19 +41,15 @@ Schedule.defaultProps = defaultProps
 
 function mapStateToProps (state) {
   return {
-    schedule: selectors.schedule(state)
+    weeks: selectors.weeks(state)
   }
 }
 
 const mapDispatchToProps = {
-  fetchSchedule: apiActions.fetchSchedule,
-  clearSchedule: actions.clearSchedule,
-  setSchedule: actions.setSchedule,
+  fetchWeek: apiActions.fetchWeek,
+  setWeeks: actions.setWeeks,
 }
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  onMount('fetchSchedule'),
-  waitFor('schedule'),
-  onUnmount('clearSchedule')
 )(Schedule)
