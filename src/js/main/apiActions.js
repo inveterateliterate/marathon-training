@@ -1,17 +1,26 @@
 import { requestWithKey } from 'lp-redux-api'
 
-const { API_ENDPOINT } = process.env
+export const REQ_WEEK = 'REQ_WEEK'
 
-export const REQ_SCHEDULE = 'REQ_SCHEDULE'
-
-export function fetchSchedule () {
-  return requestWithKey(REQ_SCHEDULE, {
-    url: `/${API_ENDPOINT}/Schedule?view=viwt1WOG8hR71EX9q`
+export function fetchWeek (weekNum, tableName) {
+  return requestWithKey(REQ_WEEK, {
+    url: `/${tableName}?filterByFormula=%7Bweek%7D%3D%22${weekNum}%22&view=viwt1WOG8hR71EX9q`,
+    // put back as query string when upgade lp-requests
   })
 }
 
-export function fetchSarahSchedule () {
-  return requestWithKey(REQ_SCHEDULE, {
-    url: `/${API_ENDPOINT}/SarahSchedule?view=viw0ypJ98ne5lqm80`
+export function fetchSarahWeek (weekNum, tableName) {
+  return requestWithKey(REQ_WEEK, {
+    url: `/${tableName}?filterByFormula=%7Bweek%7D%3D%22${weekNum}%22&view=viw0ypJ98ne5lqm80`,
+    // put back as query string when upgade lp-requests
   })
 }
+
+// export function fetchSchedule () {
+//   return requestWithKey(REQ_WEEKS, {
+//     url: '/Schedule',
+//     query: {
+//       view: 'viwt1WOG8hR71EX9q'
+//     }
+//   })
+// }

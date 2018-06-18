@@ -12,7 +12,7 @@ import * as options from 'options'
 const propTypes = {
   isCompleted: PropTypes.bool.isRequired,
   dayRecord: Types.dayRecord.isRequired,
-  setSchedule: PropTypes.func.isRequired,
+  setWeeks: PropTypes.func.isRequired,
   tableName: PropTypes.string.isRequired,
 }
 
@@ -30,7 +30,7 @@ function WeekSummary ({
     id: recordId,
   },
     isCompleted,
-    setSchedule,
+    setWeeks,
     tableName,
 }) {
   return (
@@ -45,7 +45,7 @@ function WeekSummary ({
             onClick={
               () => {
                 effects.updateSatus(recordId, tableName, !isCompleted ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
-                .then(setSchedule)
+                .then(setWeeks)
               }
             }
           >
@@ -63,7 +63,7 @@ function WeekSummary ({
       </div>
       <DayForm
         initialValues={ { notes } }
-        onSubmit={ params => effects.updateDay(recordId, params) }
+        onSubmit={ params => effects.updateDay(recordId, tableName, params) }
         name={ `day-form-${recordId}` }
       />
       <hr/>

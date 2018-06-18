@@ -6,23 +6,27 @@ import FontAwesomeIcon from 'react-fontawesome'
 import { faPlus, faMinus } from 'fontawesome-solid'
 import classnames from 'classnames'
 import WeekSummary from './WeekSummary'
+import * as Types from 'types'
 
 const propTypes = {
   ...togglePropTypes('expanded'),
-  redirectToSchedule: PropTypes.func,
+  week: PropTypes.arrayOf(Types.dayRecord),
+  tableName: PropTypes.string.isRequired,
+  weekNum: PropTypes.number.isRequired,
+  onExpand: PropTypes.func.isRequired,
+  setWeeks: PropTypes.func.isRequired,
 }
 
-const defaultProps = {
-  expanded: false,
-}
+const defaultProps = {}
 
 function WeekCard ({
-  weekArray,
+  week,
   weekNum,
+  tableName,
   expanded,
   toggleExpanded,
-  setSchedule,
-  tableName,
+  onExpand,
+  setWeeks,
 }) {
   return (
     <div >
@@ -32,22 +36,26 @@ function WeekCard ({
             <h3>Week { weekNum }</h3>
           </div>
           <div className="col-3">
-              <FontAwesomeIcon
-                icon={ expanded ? faMinus : faPlus }
-                style={ { cursor: 'pointer', color: '#A9A9A9' } }
-                onClick={ toggleExpanded }
-                className="collapsible"
-              />
+            <FontAwesomeIcon
+              icon={ expanded ? faMinus : faPlus }
+              style={ { cursor: 'pointer', color: '#A9A9A9' } }
+              onClick={ () => {
+                toggleExpanded()
+                onExpand()
+              } }
+              className="collapsible"
+            />
           </div>
         </div>
         {
           expanded &&
-          weekArray.map((day, i) =>
+          week &&
+          week.map((day, i) =>
             <WeekSummary
               key={ i }
               dayRecord={ day }
-              setSchedule={ setSchedule }
               tableName={ tableName }
+              setWeeks={ setWeeks }
             />
           )
         }
@@ -55,7 +63,6 @@ function WeekCard ({
     </div>
   )
 }
-
 
 WeekCard.propTypes = propTypes
 WeekCard.defaultProps = defaultProps

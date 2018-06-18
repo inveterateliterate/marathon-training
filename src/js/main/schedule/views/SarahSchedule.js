@@ -3,60 +3,53 @@ import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { selectors } from '../reducer'
-import { onMount, waitFor, onUnmount } from 'lp-hoc'
 import { Header } from 'components'
 import { WeekCard } from '../components'
 import * as apiActions from 'api-actions'
 import * as actions from '../actions'
-import * as Types from 'types'
-import { groupByWeek } from 'utils'
 
 const propTypes = {
-  schedule: PropTypes.arrayOf(Types.dayRecord).isRequired,
-  setSchedule: PropTypes.func.isRequired,
+  weeks: PropTypes.array.isRequired,
+  fetchSarahWeek: PropTypes.func.isRequired,
+  setWeeks: PropTypes.func.isRequired,
 }
 
 const defaultProps = {}
 
-function Schedule ({ schedule, setSchedule }) {
-  const recordsByWeek = groupByWeek(schedule)
+function SarahSchedule ({ weeks, fetchSarahWeek, setWeeks }) {
   return (
-    <div >
+    <div>
       <Header />
       {
-        Object.keys(recordsByWeek).map((week, i) =>
+        weeks.map((week, i) =>
           <WeekCard
             key={ i }
-            weekArray={ recordsByWeek[week] }
-            weekNum={ week }
-            setSchedule={ setSchedule }
+            week={ week }
+            weekNum={ i + 1 }
+            onExpand={ () => fetchSarahWeek((i + 1), 'SarahSchedule') }
             tableName="SarahSchedule"
+            setWeeks={ setWeeks }
           />
         )
       }
     </div>
-
   )
 }
 
-Schedule.propTypes = propTypes
-Schedule.defaultProps = defaultProps
+SarahSchedule.propTypes = propTypes
+SarahSchedule.defaultProps = defaultProps
 
 function mapStateToProps (state) {
   return {
-    schedule: selectors.schedule(state)
+    weeks: selectors.weeks(state)
   }
 }
 
 const mapDispatchToProps = {
-  fetchSchedule: apiActions.fetchSarahSchedule,
-  clearSchedule: actions.clearSchedule,
-  setSchedule: actions.setSchedule,
+  fetchSarahWeek: apiActions.fetchSarahWeek,
+  setWeeks: actions.setWeeks,
 }
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  onMount('fetchSchedule'),
-  waitFor('schedule'),
-  onUnmount('clearSchedule')
-)(Schedule)
+)(SarahSchedule)

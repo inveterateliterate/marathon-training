@@ -4,7 +4,7 @@ import { middleware as configureMiddleware } from 'lp-redux-api'
 // Configure middleware and api services
 
 export const { API_HOST, API_ENDPOINT, API_TOKEN } = process.env
-export const API_URL = [API_HOST, API_ENDPOINT].join('/')
+export const API_URL = API_HOST + '/' + API_ENDPOINT
 
 function before () {
   return {
@@ -13,7 +13,7 @@ function before () {
 }
 
 export const config = {
-  root: API_HOST,
+  root: API_URL,
   mode: 'cors',
   before,
   successDataPath: 'records',
