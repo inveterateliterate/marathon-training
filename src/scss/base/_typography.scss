@@ -47,7 +47,7 @@ h5 { font-size: $font-size-base * 1.00; @include media($tablet){ font-size: $fon
 h6 { font-size: $font-size-base - 2.00; @include media($tablet){ font-size: $font-size-base * 1.00; } }
 
 
-h1{
+h2{
   color: $blue-base;
 }
 
@@ -87,7 +87,7 @@ a {
   @include s-base;
   @include font-type($primary-sans-serif, normal, $bold);
   @include transition(all 0.3s ease-in-out);
-  text-decoration: underline;
+  text-decoration: none;
 
   &:hover, &:focus  {
     color: $black-dark;

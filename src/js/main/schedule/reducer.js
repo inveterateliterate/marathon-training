@@ -3,7 +3,7 @@ import { get } from 'lodash/fp'
 import { setFromRequest } from 'lp-redux-api'
 import { selectorForSlice, setState } from 'lp-redux-utils'
 import { range, first } from 'lodash'
-import { numWeeks } from 'config'
+import { NUM_WEEKS } from 'config'
 import * as apiActions from 'api-actions'
 import * as actions from './actions'
 
@@ -11,7 +11,7 @@ const reducerKey = 'schedule'
 const slice = 'root.schedule'
 
 const initialState = {
-  weeks: range(numWeeks).map(() => null)
+  weeks: range(NUM_WEEKS).map(() => null)
 }
 
 const reducer = handleActions({

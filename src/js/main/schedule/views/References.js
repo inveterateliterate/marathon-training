@@ -1,5 +1,6 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
+import { Header } from 'components'
 import { Link } from 'react-router'
 
 const propTypes = {}
@@ -8,7 +9,8 @@ const defaultProps = {}
 
 function References () {
   return (
-    <div >
+    <div>
+      <Header />
       <h1>References</h1>
       <ul>
         <li>

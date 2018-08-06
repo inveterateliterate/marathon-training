@@ -1,6 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
+import { NavLink } from 'lp-components'
 import { SARAH_SCHEDULE_ROUTE, REFERENCES_ROUTE } from 'config'
 
 const propTypes = {}
@@ -9,24 +10,23 @@ const defaultProps = {}
 
 function Header () {
   return (
-    <div >
-      <header className="header-block-container">
-        <h1>2018 Chicago Marathon Training Schedule</h1>
-        <h2>Race Date: October 7 2018</h2>
-        <ul>
+    <header className="header-block-container">
+      <div className="navigation">
+        <h2>2018 Chicago Marathon Training Schedule</h2>
+        <h1>Race Date: October 7 2018</h1>
+        <ul className="nav">
           <li>
-            <Link to="/">Ifat</Link>
+            <NavLink to="/">Ifat</NavLink>
           </li>
           <li>
-            <Link to={SARAH_SCHEDULE_ROUTE}>Sarah</Link>
+            <NavLink to={ SARAH_SCHEDULE_ROUTE }>Sarah</NavLink>
           </li>
           <li>
-            <Link to={REFERENCES_ROUTE}>References</Link>
+            <NavLink to={ REFERENCES_ROUTE }>References</NavLink>
           </li>
         </ul>
-
-      </header>
-    </div>
+      </div>
+    </header>
   )
 }
 

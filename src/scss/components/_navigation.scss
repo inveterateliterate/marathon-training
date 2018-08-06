@@ -4,17 +4,16 @@ $mobile-nav-height: 58px;
 $desktop-nav-height: 70px;
 $tablet-nav-height: 90px;
 
-.navigation {
-  background-color: $blue-base;
-  box-shadow: 0 0 18px 0 rgba(131,131,131,0.10);
-  height: $desktop-nav-height;
-  position: relative;
-  text-align: center;
-  width: 100%;
-}
+// .navigation {
+  // background-color: $blue-base;
+  // box-shadow: 0 0 18px 0 rgba(131,131,131,0.10);
+  // height: $desktop-nav-height;
+  // position: relative;
+//   text-align: center;
+//   width: 100%;
+// }
 
 .tablet{
-
   .navigation{
     padding-top: 20px;
     height: $tablet-nav-height;
@@ -53,12 +52,13 @@ Logo
 Primary Nav
 -----------------------*/
 .navigation{
-  @include position(fixed, 0 null null null);
+  // @include position(fixed, 0 null null null);
   @include transition(all 0.3s ease-in-out);
+  text-align: center;
   width: 100%;
   z-index: 2;
 
-  nav{
+  .nav{
     text-align: right;
     float: right;
     @include mobile-hide;
@@ -70,41 +70,44 @@ Primary Nav
     // text-transform: uppercase;
     vertical-align: top;
 
-    &:last-child{
-      &:before{
-        border-left: 1px solid $white-base;
-        // content: "";
-        display: inline-block;
-        height: 27px;
-        @include rem(margin-right, 25px);
-        opacity: 0.6;
-        vertical-align: middle;
-      }
+    // &:last-child{
+    //   &:before{
+    //     border-left: 1px solid $white-base;
+    //     // content: "";
+    //     display: inline-block;
+    //     height: 27px;
+    //     @include rem(margin-right, 25px);
+    //     opacity: 0.6;
+    //     vertical-align: middle;
+    //   }
 
-      a:after{
-        content: "";
-        cursor: pointer;
-        display: inline-block;
-        background-image: asset-url("dropdown-white.svg");
-        background-repeat: no-repeat;
-        background-size: 15px;
-        height: 10px;
-        @include rem(margin-left, 10px);
-        width: 20px;
-        vertical-align: middle;
-      }
-    }
+    //   a:after{
+    //     content: "";
+    //     cursor: pointer;
+    //     display: inline-block;
+    //     background-image: asset-url("dropdown-white.svg");
+    //     background-repeat: no-repeat;
+    //     background-size: 15px;
+    //     height: 10px;
+    //     @include rem(margin-left, 10px);
+    //     width: 20px;
+    //     vertical-align: middle;
+    //   }
+    // }
 
     a{
       // color: $white-base;
-      @include s-small;
+      @include s-base;
       text-decoration: none;
 
       &:hover{
         opacity: 0.6;
       }
-    }
 
+      &.is-active{
+        border-bottom: (1px solid $blue-base);
+      }
+    }
   }
 }
 
