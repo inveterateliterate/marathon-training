@@ -5,3 +5,13 @@
 .summary {
   @include rem(margin-bottom, 14px);
 }
+
+.card {
+  li {
+    a {
+      @include s-medium;
+      line-height: 2.0;
+      color: $grey-dark;
+    }
+  }
+}

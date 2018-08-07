@@ -11,7 +11,8 @@ const reducerKey = 'schedule'
 const slice = 'root.schedule'
 
 const initialState = {
-  weeks: range(NUM_WEEKS).map(() => null)
+  weeks: range(NUM_WEEKS).map(() => null),
+  timeLeft: {},
 }
 
 const reducer = handleActions({
@@ -27,12 +28,14 @@ const reducer = handleActions({
       return Number(returnedDay.fields.week) === (i + 1) ? week.map(day => returnedDay.id === day.id ? returnedDay : day) : week
     })
   }),
+  [actions.setTimeLeft]: setState('timeLeft'),
 }, initialState)
 
 const select = selectorForSlice(slice)
 
 const selectors = {
   weeks: select('weeks'),
+  timeLeft: select('timeLeft'),
 }
 
 export { reducer, selectors, reducerKey }

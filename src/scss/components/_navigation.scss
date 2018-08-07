@@ -58,7 +58,7 @@ Primary Nav
   width: 100%;
   z-index: 2;
 
-  .nav{
+  nav{
     text-align: right;
     float: right;
     @include mobile-hide;
@@ -69,6 +69,7 @@ Primary Nav
     @include rem(margin, 0 0 0 25px);
     // text-transform: uppercase;
     vertical-align: top;
+    color: $grey-dark;
 
     // &:last-child{
     //   &:before{
@@ -96,16 +97,18 @@ Primary Nav
     // }
 
     a{
-      // color: $white-base;
       @include s-base;
       text-decoration: none;
+      border-bottom: 2px solid transparent;
+      display: inline-block;
+      // @include rem(padding-bottom, 5px);
 
       &:hover{
         opacity: 0.6;
       }
 
       &.is-active{
-        border-bottom: (1px solid $blue-base);
+        border-color: $blue-base;
       }
     }
   }
