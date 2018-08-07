@@ -85,6 +85,11 @@ img { width: 100%; }
   width: 100%;
 }
 
+@mixin mobile-left {
+  text-align: left;
+  float: initial;
+}
+
 @mixin mobile-hide {
   display: none;
   @include media($tablet) { display: block; }

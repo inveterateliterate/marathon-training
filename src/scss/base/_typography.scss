@@ -50,6 +50,7 @@ h6 { font-size: $font-size-base - 2.00; @include media($tablet){ font-size: $fon
 
 h1 {
   @include s-bigger;
+  line-height: 0.9rem;
 }
 
 h2{

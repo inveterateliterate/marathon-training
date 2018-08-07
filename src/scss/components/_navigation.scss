@@ -58,11 +58,17 @@ Primary Nav
   width: 100%;
   z-index: 2;
 
-  nav{
-    text-align: right;
-    float: right;
-    @include mobile-hide;
+  .nav{
+    text-align: center;
+    // float: right;
+    // @include mobile-left;
   }
+
+
+
+  // ul{
+  //   text-align: left;
+  // }
 
   li{
     display: inline-block;
