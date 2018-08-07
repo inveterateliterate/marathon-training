@@ -23,6 +23,7 @@ function CountdownTimer ({
     seconds,
   },
 }) {
+  // could Object.keys && map here, but it upsets the offset with the scrolling functionality, which is perfect otherwise
   return (
     <ul>
       <li>{ weeks } weeks</li>

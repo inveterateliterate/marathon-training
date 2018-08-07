@@ -2349,10 +2349,6 @@ cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
     parse-json "^2.2.0"
     require-from-string "^1.1.0"
 
-"countdown@>= 2.3.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/countdown/-/countdown-2.6.0.tgz#677fb8e3a9d4cc4e76415901ba253b518af34177"
-
 create-ecdh@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.0.tgz#888c723596cdf7612f6498233eebd7a35301737d"
@@ -6052,14 +6048,7 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
-moment-countdown@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/moment-countdown/-/moment-countdown-0.0.3.tgz#93100c92aa6fd884b84a83814ebdcd6b87f3388d"
-  dependencies:
-    countdown ">= 2.3.0"
-    moment ">= 2.0.0"
-
-"moment@>= 2.0.0", moment@>=1.6.0, moment@^2.19.3:
+moment@^2.19.3:
   version "2.22.2"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
@@ -7477,16 +7466,6 @@ react-dom@^16.2.0:
 react-lifecycles-compat@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.2.tgz#7279047275bd727a912e25f734c0559527e84eff"
-
-react-moment-countdown@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-moment-countdown/-/react-moment-countdown-0.3.0.tgz#155b924f93f6588ef0702bcb49cf2004750f2bc3"
-
-react-moment-proptypes@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/react-moment-proptypes/-/react-moment-proptypes-1.6.0.tgz#8ec266ee392a08ba3412d2df2eebf833ab1046df"
-  dependencies:
-    moment ">=1.6.0"
 
 react-onclickoutside@^6.7.1:
   version "6.7.1"
