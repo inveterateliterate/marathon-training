@@ -29,37 +29,35 @@ function WeekCard ({
   setWeeks,
 }) {
   return (
-    <div >
-      <div className={ classnames('collapsible-container', 'card', { expanded }) }>
-        <div className="row">
-          <div className="col-9">
-            <h3>Week { weekNum }</h3>
-          </div>
-          <div className="col-3">
-            <FontAwesomeIcon
-              icon={ expanded ? faMinus : faPlus }
-              style={ { cursor: 'pointer', color: '#A9A9A9' } }
-              onClick={ () => {
-                toggleExpanded()
-                onExpand()
-              } }
-              className="collapsible"
-            />
-          </div>
+    <div className={ classnames('collapsible-container', 'card', { expanded }) }>
+      <div className="row">
+        <div className="col-9">
+          <h3>Week { weekNum }</h3>
         </div>
-        {
-          expanded &&
-          week &&
-          week.map((day, i) =>
-            <WeekSummary
-              key={ i }
-              dayRecord={ day }
-              tableName={ tableName }
-              setWeeks={ setWeeks }
-            />
-          )
-        }
+        <div className="col-3">
+          <FontAwesomeIcon
+            icon={ expanded ? faMinus : faPlus }
+            style={ { cursor: 'pointer', color: '#A9A9A9' } }
+            onClick={ () => {
+              toggleExpanded()
+              onExpand()
+            } }
+            className="collapsible"
+          />
+        </div>
       </div>
+      {
+        expanded &&
+        week &&
+        week.map((day, i) =>
+          <WeekSummary
+            key={ i }
+            dayRecord={ day }
+            tableName={ tableName }
+            setWeeks={ setWeeks }
+          />
+        )
+      }
     </div>
   )
 }
@@ -68,5 +66,5 @@ WeekCard.propTypes = propTypes
 WeekCard.defaultProps = defaultProps
 
 export default compose(
-  toggle('expanded')
+  toggle('expanded'),
 )(WeekCard)
