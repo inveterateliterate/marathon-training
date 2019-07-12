@@ -6,18 +6,22 @@ function aliases (basePath) {
   const to = relPath => path.join(basePath, relPath)
   return {
     // Local
-    'api': to('js/services/api'),
     'api-actions': to('js/main/apiActions'),
-    'auth': to('js/services/auth'),
     'components': to('js/components'),
     'config': to('js/config'),
     'effects': to('js/main/effects'),
     'images': to('images'),
-    'local-storage': to('js/services/localStorage'),
     'options': to('js/main/options'),
+    'store': to('js/main/store'),
     'reducer': to('js/main/reducer'),
     'types': to('js/main/types'),
     'utils': to('js/utils'),
+    // Services
+    'api': to('js/services/api'),
+    'auth': to('js/services/auth'),
+    // 'browser-history': to('js/services/browserHistory'),
+    'local-storage': to('js/services/localStorage'),
+    // 'sessions': to('js/services/sessions'),
     // Modules
     'fontawesome': '@fortawesome/fontawesome',
     'fontawesome-solid': '@fortawesome/fontawesome-free-solid',

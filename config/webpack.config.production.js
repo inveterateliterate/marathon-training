@@ -4,16 +4,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const DotIndexPlugin = require('dot-index-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const stringifyValues = require('./helpers/stringifyValues')
-const Figaro = require('figaro-js')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const { loadEnv } = require('./env')
 const paths = require('./paths')
 const aliases = require('./aliases')
 const bourbonIncludePaths = require('bourbon').includePaths
 const neatIncludePaths = require('bourbon-neat').includePaths
+const BabelEnginePlugin = require('babel-engine-plugin')
 
+loadEnv()
 process.env.NODE_ENV = process.env.NODE_ENV || 'production'
 if (!['production', 'test'].includes(process.env.NODE_ENV)) throw new Error('Builds must be in production or test environment.')
-Figaro.load()
+// Figaro.load()
 
 // Display full deprecation warnings, if any
 process.traceDeprecation = true
@@ -27,7 +29,7 @@ module.exports = {
     'babel-polyfill',
     paths.jsFolder,
   ],
-  output: {   
+  output: {
     path: paths.outputFolder,
     filename: 'static/js/[name].[chunkhash:8].js',
     publicPath: '/',
@@ -51,7 +53,7 @@ module.exports = {
         include: paths.sourceFolder,
         use: [
           {
-            loader: 'url-loader', 
+            loader: 'url-loader',
             options: {
               limit: 10000,
               name: 'static/media/[name].[hash:8].[ext]'
@@ -68,7 +70,7 @@ module.exports = {
           'xmp-escape-loader',
         ],
       },
-      // `ExtractTextPlugin` first applies our loaders, then grabs the result CSS and puts it in a separate file. 
+      // `ExtractTextPlugin` first applies our loaders, then grabs the result CSS and puts it in a separate file.
       // This way we actually ship a single CSS file in production instead of JS code injecting <style> tags.
       {
         test: /\.scss$/,
@@ -134,19 +136,24 @@ module.exports = {
         minifyURLs: true
       },
     }),
+    // Minify JS for production
+    new UglifyJSPlugin({ sourceMap: true }),
     // Copy all files in /public to /build
     new CopyWebpackPlugin([{ from: paths.publicFolder, to: paths.outputFolder }]),
     // Injects env variables into JS code
     new webpack.DefinePlugin({
-      'process.env': stringifyValues(process.env),
+      'process.env': 'window.process.env'
     }),
     // Remove extraneous moment locales
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     // Put CSS into a single file
     // Note: this won't work without ExtractTextPlugin.extract(..) in `loaders`.
     new ExtractTextPlugin({
-      filename: 'static/css/[name].[contenthash:8].css', 
+      filename: 'static/css/[name].[contenthash:8].css',
       allChunks: true,
+    }),
+    new BabelEnginePlugin({
+      presets: ['env']
     }),
   ],
   // Separate vendor JS into its own file
@@ -172,3 +179,4 @@ module.exports = {
     tls: 'empty'
   }
 }
+

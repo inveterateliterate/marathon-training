@@ -16,7 +16,6 @@ function Layout ({ children }) {
 }
 
 Layout.propTypes = propTypes
-
 Layout.defaultProps = defaultProps
 
 export default Layout

@@ -1,7 +1,12 @@
 const express = require('express')
 const path = require('path')
 const enforceSSL = require('express-enforces-ssl')
+const { loadEnv, loadPublicEnv } = require('./config/env')
+const exposeEnvMiddleware = require('expose-env-middleware')
+const compression = require('compression')
 const proxy = require('http-proxy-middleware')
+
+loadEnv()
 
 const {
   PORT=8080,
@@ -16,6 +21,9 @@ const app = express()
 if (NODE_ENV === 'production') {
   app.enable('trust proxy')
   app.use(enforceSSL())
+
+  // Enable gzip compression to decrease response body size to increase speed
+  app.use(compression())
 }
 
 // Use build folder for static files
@@ -29,6 +37,9 @@ app.use(express.static('build'))
 //   secure: true,
 //   ignorePath: true,
 // }))
+
+// Expose env variables to JS code
+app.get('/env', exposeEnvMiddleware(loadPublicEnv))
 
 // Send main index file for every request
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/build/index.html')))

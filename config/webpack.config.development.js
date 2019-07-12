@@ -1,16 +1,17 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
-const stringifyValues = require('./helpers/stringifyValues')
-const Figaro = require('figaro-js')
+const { loadEnv, loadPublicEnv } = require('./env')
 const paths = require('./paths')
 const aliases = require('./aliases')
 const DotIndexPlugin = require('dot-index-webpack-plugin')
 const bourbonIncludePaths = require('bourbon').includePaths
 const neatIncludePaths = require('bourbon-neat').includePaths
+const BabelEnginePlugin = require('babel-engine-plugin')
+const exposeEnvMiddleware = require('expose-env-middleware')
 
+loadEnv()
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
-Figaro.load()
 
 // Display full deprecation warnings, if any
 process.traceDeprecation = true
@@ -113,11 +114,14 @@ module.exports = {
     }),
     // Injects env variables into JS code
     new webpack.DefinePlugin({
-      'process.env': stringifyValues(process.env),
+      'process.env': 'window.process.env'
     }),
     // Watcher doesn't work well if you mistype casing in a path so we use
     // a plugin that prints an error when you attempt to do this.
     new CaseSensitivePathsPlugin(),
+    new BabelEnginePlugin({
+      presets: ['env']
+    }),
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
@@ -129,11 +133,14 @@ module.exports = {
   // Configure the dev server
   devServer: {
     contentBase: paths.publicFolder,
+    // Expose env variables to JS code
+    before: app => app.get('/env', exposeEnvMiddleware(loadPublicEnv)),
     compress: true,
     inline: true,
     clientLogLevel: 'none',
     stats: { chunks: false },
     historyApiFallback: true,
+    disableHostCheck: true,
     watchOptions: {
       ignored: [
         /node_modules/,
