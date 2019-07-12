@@ -18,10 +18,8 @@ function aliases (basePath) {
     'utils': to('js/utils'),
     // Services
     'api': to('js/services/api'),
-    'auth': to('js/services/auth'),
-    // 'browser-history': to('js/services/browserHistory'),
+    'browser-history': to('js/services/browserHistory'),
     'local-storage': to('js/services/localStorage'),
-    // 'sessions': to('js/services/sessions'),
     // Modules
     'fontawesome': '@fortawesome/fontawesome',
     'fontawesome-solid': '@fortawesome/fontawesome-free-solid',

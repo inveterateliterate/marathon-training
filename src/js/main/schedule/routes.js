@@ -1,5 +1,6 @@
 import React from 'react'
-import { Route, IndexRoute, IndexRedirect } from 'react-router'
+import PropTypes from 'prop-types'
+import { Route, Switch } from 'react-router'
 import * as Views from './views'
 import Layout from './Layout'
 import {
@@ -8,14 +9,27 @@ import {
   REFERENCES_ROUTE
 } from 'config'
 
-const Routes = (
-  <Route component={ Layout }>
-    <IndexRoute component={ Views.Schedule } />
-    <IndexRedirect to={ IFAT_SCHEDULE_ROUTE } />
-    <Route path={ IFAT_SCHEDULE_ROUTE } component={ Views.Schedule } />
-    <Route path={ SARAH_SCHEDULE_ROUTE } component={ Views.SarahSchedule } />
-    <Route path={ REFERENCES_ROUTE } component={ Views.References } />
-  </Route>
-)
+const propTypes = {
+  match: PropTypes.object.isRequired,
+}
+
+const defaultProps = {}
+
+function Routes ({ match: { path } }) {
+  return(
+    <Layout>
+      <Switch>
+        <Route component={ Layout }>
+          <Route exact path={ path + IFAT_SCHEDULE_ROUTE } component={ Views.Schedule } />
+          <Route path={ path + SARAH_SCHEDULE_ROUTE } component={ Views.SarahSchedule } />
+          <Route path={ path + REFERENCES_ROUTE } component={ Views.References } />
+        </Route>
+      </Switch>
+    </Layout>
+  )
+}
+
+Routes.propTypes = propTypes
+Routes.defaultProps = defaultProps
 
 export default Routes

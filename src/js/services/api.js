@@ -1,4 +1,4 @@
-import { configureApi } from 'lp-requests'
+import { configureApi, http } from 'lp-requests'
 import { middleware as configureMiddleware } from 'lp-redux-api'
 
 // Configure middleware and api services
@@ -20,5 +20,5 @@ export const config = {
 }
 
 const baseApi = configureApi(config)
-export const middleware = configureMiddleware(config)
+export const middleware = configureMiddleware(http, config)
 export const api = configureApi({ before }, baseApi)

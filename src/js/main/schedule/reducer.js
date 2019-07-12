@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions'
 import { get } from 'lodash/fp'
-import { setFromRequest } from 'lp-redux-api'
+import { setOnSuccess } from 'lp-redux-api'
 import { selectorForSlice, setState } from 'lp-redux-utils'
 import { range, first } from 'lodash'
 import { NUM_WEEKS } from 'config'
@@ -16,7 +16,8 @@ const initialState = {
 }
 
 const reducer = handleActions({
-  ...setFromRequest(apiActions.REQ_WEEK, 'week'),
+  [apiActions.REQ_WEEK]: setOnSuccess('week'),
+  // ...setOnSuccess(apiActions.REQ_WEEK, 'week'),
   [apiActions.REQ_WEEK + '_SUCCESS']: setState('weeks', ({ payload: returnedWeek }, state) => {
     const weekNum = Number(first(returnedWeek).fields.week)
     const weeks = get('weeks', state)
