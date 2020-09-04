@@ -57,7 +57,7 @@
     "http-proxy-middleware": "0.18.0",
     "json-loader": "0.5.7",
     "lodash": "^4.17.4",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^2.0.8",
     "prop-types": "^15.6.0",
     "prop-types-exact": "^1.1.2",
