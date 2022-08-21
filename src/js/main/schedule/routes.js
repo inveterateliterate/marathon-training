@@ -20,7 +20,8 @@ function Routes ({ match: { path } }) {
     <Layout>
       <Switch>
         <Route component={ Layout }>
-          <Route exact path={ path + IFAT_SCHEDULE_ROUTE } component={ Views.Schedule } />
+          <Route path={ path + '/' } component={ Views.Schedule } />
+          <Route path={ path + IFAT_SCHEDULE_ROUTE } component={ Views.Schedule } />
           <Route path={ path + SARAH_SCHEDULE_ROUTE } component={ Views.SarahSchedule } />
           <Route path={ path + REFERENCES_ROUTE } component={ Views.References } />
         </Route>

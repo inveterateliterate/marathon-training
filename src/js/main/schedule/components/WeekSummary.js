@@ -44,7 +44,7 @@ function WeekSummary ({
             className={ classnames('button', (isCompleted ? 'button-success' : 'button-warn'), 'button-small') }
             onClick={
               () => {
-                effects.updateSatus(recordId, tableName, !isCompleted ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
+                effects.updateStatus(recordId, tableName, !isCompleted ? options.statusCopy.COMPLETE : options.statusCopy.INCOMPLETE)
                 .then(setWeeks)
               }
             }

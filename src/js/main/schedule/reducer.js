@@ -17,7 +17,6 @@ const initialState = {
 
 const reducer = handleActions({
   [apiActions.REQ_WEEK]: setOnSuccess('week'),
-  // ...setOnSuccess(apiActions.REQ_WEEK, 'week'),
   [apiActions.REQ_WEEK + '_SUCCESS']: setState('weeks', ({ payload: returnedWeek }, state) => {
     const weekNum = Number(first(returnedWeek).fields.week)
     const weeks = get('weeks', state)

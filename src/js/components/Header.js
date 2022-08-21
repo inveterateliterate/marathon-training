@@ -13,10 +13,11 @@ function Header () {
   return (
     <header className="header-block-container">
       <div className="navigation">
-        <h2>2018 Chicago Marathon Training Schedule</h2>
+        <h2>2019 Berlin Marathon Training Schedule</h2>
         <h1>Race Date:</h1>
-        <h1>October 7, 2018</h1>
+        <h1>September 29, 2019</h1>
         <CountdownTimer />
+        {/*}
         <ul className="nav">
           <li>
             <NavLink to={ IFAT_SCHEDULE_ROUTE }>Ifat</NavLink>
@@ -28,6 +29,7 @@ function Header () {
             <NavLink to={ REFERENCES_ROUTE }>References</NavLink>
           </li>
         </ul>
+      */}
       </div>
     </header>
   )

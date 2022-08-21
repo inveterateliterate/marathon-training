@@ -3,7 +3,7 @@ import { API_URL, API_TOKEN } from 'api'
 
 // don't have to do this when upgrade
 
-export function updateSatus (recordId, tableName, params) {
+export function updateStatus (recordId, tableName, params) {
   // return api.patch(`${API_ENDPOINT}/${recordId}`, { fields: { 'Status': 'Completed '} })
   return fetch(`${API_URL}/${tableName}/${recordId}`, {
     mode: 'cors',

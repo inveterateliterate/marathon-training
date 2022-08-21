@@ -8,6 +8,6 @@ export const REFERENCES_ROUTE = '/references'
 
 // CONSTANTS
 export const NUM_WEEKS = 18
-export const START_DATE = new Date('6/3/2018')
-export const RACE_DATE = new Date('2018-10-07T07:59:59')
+export const START_DATE = new Date('5/26/2019')
+export const RACE_DATE = new Date('2019-09-29T02:14:59')
 export const CHICAGO_OFFSET = 300 // hard coding for now for use in countdown calculation
