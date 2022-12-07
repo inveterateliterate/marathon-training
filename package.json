@@ -48,7 +48,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "0.28.8",
     "dot-index-webpack-plugin": "^5.0.0",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "express-enforces-ssl": "^1.1.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "figaro-js": "^1.0.2",
